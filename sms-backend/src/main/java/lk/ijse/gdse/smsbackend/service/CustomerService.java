@@ -10,4 +10,5 @@ public interface CustomerService {
     void saveCustomer(CustomerDto customerDto);
     void update(CustomerDto customerDto);
     List<CustomerDto> get();
+    void delete(Integer id);
 }
