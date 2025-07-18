@@ -6,6 +6,8 @@ import lk.ijse.gdse.smsbackend.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/customer")
 @RequiredArgsConstructor
@@ -21,6 +23,11 @@ public class CustomerController {
     @PutMapping("update")
     public void updateCustomer(@RequestBody CustomerDto customerDto) {
         customerService.update(customerDto);
+    }
+
+    @GetMapping("get")
+    public List<CustomerDto> getCustomer(){
+        return customerService.get();
     }
 
 }

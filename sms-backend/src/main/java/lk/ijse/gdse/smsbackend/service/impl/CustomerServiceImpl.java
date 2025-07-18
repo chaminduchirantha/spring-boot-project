@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
@@ -23,5 +26,15 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void update(CustomerDto customerDto) {
         customerRepo.save(modelMapper.map(customerDto, Customer.class));
+    }
+
+    @Override
+    public List<CustomerDto> get() {
+        List<Customer> customers = customerRepo.findAll();
+        List<CustomerDto> customerDtos = new ArrayList<>();
+        for (Customer customer : customers) {
+            customerDtos.add(modelMapper.map(customer, CustomerDto.class));
+        }
+        return customerDtos;
     }
 }
