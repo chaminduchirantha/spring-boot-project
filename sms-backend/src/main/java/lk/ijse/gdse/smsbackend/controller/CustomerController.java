@@ -1,0 +1,25 @@
+package lk.ijse.gdse.smsbackend.controller;
+
+import lk.ijse.gdse.smsbackend.dto.CustomerDto;
+import lk.ijse.gdse.smsbackend.entity.Customer;
+import lk.ijse.gdse.smsbackend.service.CustomerService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("api/v1/customer")
+@RequiredArgsConstructor
+public class CustomerController {
+
+    private final CustomerService customerService;
+
+    @PostMapping("create")
+    public void saveCustomer(@RequestBody CustomerDto customerDto) {
+        customerService.saveCustomer(customerDto);
+
+    }
+
+}
